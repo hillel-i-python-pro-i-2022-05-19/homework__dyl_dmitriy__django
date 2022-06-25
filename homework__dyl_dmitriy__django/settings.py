@@ -11,6 +11,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+APPS_DIR = BASE_DIR.joinpath('apps')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -35,7 +36,7 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    'password_generator',
+    'apps.password_generator',
 ]
 
 THIRD_PARTY_APPS = [
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'homework__dyl_dmitriy__django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [APPS_DIR.joinpath('templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'homework__dyl_dmitriy__django.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR.joinpath('db', "db.sqlite3")),
     }
 }
 
